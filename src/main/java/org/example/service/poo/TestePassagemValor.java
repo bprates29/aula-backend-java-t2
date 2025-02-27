@@ -10,7 +10,7 @@ public class TestePassagemValor {
     public static void main(String[] args) {
         int num = 10;
         System.out.println("Antes de chamar o método: " + num);
-        num = dobrarValor(num);
+        dobrarValor(num);
         System.out.println("Depois de chamar o método: " + num);
     }
 
