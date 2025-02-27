@@ -13,6 +13,6 @@ public class Veiculo {
 
     public long calcularTempoEstacionado() {
         long horaSaida = System.currentTimeMillis();
-        return (horaSaida - this.horaEntrada) / (1000 * 60 * 60);
+        return (horaSaida - this.horaEntrada) / (1000L * 60L * 60L);
     }
 }

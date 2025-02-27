@@ -31,10 +31,10 @@ public class Estacionamento {
                     estacionarVeiculo();
                     break;
                 case 2:
-                    //removerVeiculo();
+                    removerVeiculo();
                     break;
                 case 3:
-                    //listarVeiculo();
+                    listarVeiculo();
                     break;
                 case 4:
                     System.out.println("\n Vagas disponiveis: " + (NUMERO_MAXIMO_DE_VAGAS - vagas.size()));
@@ -46,6 +46,40 @@ public class Estacionamento {
                     System.out.println("Opção invalida!");
             }
         } while (opcao != 5);
+    }
+
+    static void listarVeiculo() {
+        if (vagas.isEmpty()) {
+            System.out.println("Nenhum veículo estacionado!");
+            return;
+        }
+        System.out.println("Veículos estacionados: ");
+        for (Veiculo v : vagas) {
+            System.out.println(" -> Placa: " + v.placa + " | Modelo: " + v.modelo);
+        }
+    }
+
+    static void removerVeiculo() {
+        if (vagas.isEmpty()) {
+            System.out.println("\nNão há veiculos para remover!\n\n");
+            return;
+        }
+        System.out.print("\nDigite a placa do veículo a ser removido: ");
+        var placa = scanner.nextLine();
+
+        for (Veiculo v : vagas) {
+            if (v.placa.equalsIgnoreCase(placa)) {
+                var tempo = v.calcularTempoEstacionado();
+                var valorAPagar = tempo * 5.0;
+                System.out.println("Tempo estacionado: " + tempo + " horas");
+                System.out.println("Valor a pagar: R$ " + valorAPagar);
+                vagas.remove(v);
+                System.out.println("Veiculo removido com sucesso!");
+                return;
+            }
+        }
+
+        System.out.println(" Veículo não encontrado!");
     }
 
     private static void estacionarVeiculo() {
@@ -61,7 +95,6 @@ public class Estacionamento {
         String modelo = scanner.nextLine();
 
         long horaEntrada = System.currentTimeMillis();
-
         var novoVeiculo = new Veiculo(placa, modelo, horaEntrada);
         vagas.add(novoVeiculo);
 
