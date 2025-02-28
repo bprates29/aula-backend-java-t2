@@ -48,18 +48,20 @@ public class Estacionamento {
         } while (opcao != 5);
     }
 
-    static void listarVeiculo() {
+    private static void listarVeiculo() {
         if (vagas.isEmpty()) {
             System.out.println("Nenhum veículo estacionado!");
             return;
         }
         System.out.println("Veículos estacionados: ");
+
         for (Veiculo v : vagas) {
-            System.out.println(" -> Placa: " + v.placa + " | Modelo: " + v.modelo);
+            v.setPlaca("");
+            System.out.println(" -> Placa: " + v.getPlaca() + " | Modelo: " + v.getModelo());
         }
     }
 
-    static void removerVeiculo() {
+    private static void removerVeiculo() {
         if (vagas.isEmpty()) {
             System.out.println("\nNão há veiculos para remover!\n\n");
             return;
@@ -68,7 +70,7 @@ public class Estacionamento {
         var placa = scanner.nextLine();
 
         for (Veiculo v : vagas) {
-            if (v.placa.equalsIgnoreCase(placa)) {
+            if (v.isPlacaEqual(placa)) {
                 var tempo = v.calcularTempoEstacionado();
                 var valorAPagar = tempo * 5.0;
                 System.out.println("Tempo estacionado: " + tempo + " horas");
@@ -94,8 +96,7 @@ public class Estacionamento {
         System.out.print("\n Digite o modelo do veiculo: ");
         String modelo = scanner.nextLine();
 
-        long horaEntrada = System.currentTimeMillis();
-        var novoVeiculo = new Veiculo(placa, modelo, horaEntrada);
+        var novoVeiculo = new Veiculo(placa, modelo);
         vagas.add(novoVeiculo);
 
         System.out.println("Veículo estacionado com sucesso!");

@@ -1,5 +1,7 @@
 package org.example.objects;
 
+import org.example.estacionamento.Veiculo;
+
 import java.util.Objects;
 
 public class Carro {
@@ -29,6 +31,8 @@ public class Carro {
 
     @Override
     public int hashCode() {
+//        var v = new Veiculo("asdasd", "asdasd", 1L);
+//        v.placa = "asdasdsad";
         return Objects.hash(modelo, ano);
     }
 }
