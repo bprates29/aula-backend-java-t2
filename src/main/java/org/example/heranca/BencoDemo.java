@@ -14,5 +14,8 @@ public class BencoDemo {
         cp.exibirInformacoes();
         cp.sacar(100.0);
         cp.exibirInformacoes();
+
+        ContaBancaria cb = new ContaBancaria("Fulano", 1000.0);
+        cb.exibirInformacoes();
     }
 }

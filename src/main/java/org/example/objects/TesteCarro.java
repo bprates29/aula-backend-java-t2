@@ -1,10 +1,15 @@
 package org.example.objects;
 
+import org.example.heranca.ContaBancaria;
+
 public class TesteCarro {
     public static void main(String[] args) {
         Carro carro1 = new Carro("Fusca", 1970);
         Carro carro2 = new Carro("Civic", 2020);
         Carro carro3 = new Carro("Fusca", 1970);
+
+//        var conta = new ContaBancaria("fulano", 10.0);
+//        var saldo = conta.saldo;
 
         carro1.toString();
         carro1.hashCode();
