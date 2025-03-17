@@ -1,6 +1,6 @@
 package org.example.heranca;
 
-public class ContaBancaria {
+public abstract class ContaBancaria {
     private String titular;
     private double saldo;
 
@@ -8,6 +8,11 @@ public class ContaBancaria {
                          double saldoInicial) {
         this.titular = titular;
         this.saldo = saldoInicial;
+    }
+
+    public final void inicializarRecursosEspeciais() {
+        // Lógica critica que não deve ser alterada, herdada...
+        System.out.println("Inicializando os processos criticos para as contas...");
     }
 
     public String getTitular() {
@@ -48,4 +53,6 @@ public class ContaBancaria {
         System.out.println("Titular: " + titular);
         System.out.println("Saldo: " + saldo);
     }
+
+    public abstract double calcularTaxaEspecial();
 }
