@@ -23,6 +23,10 @@ public abstract class ContaBancaria {
         this.titular = titular;
     }
 
+    public void alterarTitular(String titular) {
+        this.titular = titular;
+    }
+
     public double getSaldo() {
         return saldo;
     }
